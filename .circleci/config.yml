@@ -28,7 +28,7 @@ jobs:
           - run:
               name: Install Dependencies
               command: |
-                apt update
+                apt update -y
                 apt install awscli -y
                 apt install python3-pip -y
                 apt install ansible -y

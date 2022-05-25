@@ -1,6 +1,6 @@
 # Exercise - Rollback
 AWSTemplateFormatVersion: 2010-09-09
-Description: ND9991 C3 L4 
+Description: Create new Ec2 and Security Group with Inbound ssh and http
 Resources:
   InstanceSecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'

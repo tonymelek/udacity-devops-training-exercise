@@ -35,13 +35,21 @@ jobs:
                 apt install awscli -y
                 apt install python3-pip -y
                 apt install ansible -y
+                apt install curl -y
           - run:
               name: Configure Server
               command: |
-                aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text 
                 aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text >> ansible/inventory.txt
                 ansible-playbook -i ansible/inventory.txt ansible/main.yml 
-
+          - run:
+              name: Smoke Test
+              command: |
+                    if curl -s --head "http://$(aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text)" 
+                    then
+                      echo "It worked!"
+                    else
+                      echo "It failed"
+                    fi
 # Sequential workflow
 workflows:
   # Name the workflow

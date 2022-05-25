@@ -45,5 +45,5 @@ workflows:
     jobs:
       - create_infrastructure
       - ansible_playbook:
-          reruires:
+          requires:
             - create_infrastructure

@@ -23,13 +23,11 @@ jobs:
           - image: ubuntu
             environment:
               TZ: "America/Los_Angeles"
+              DEBIAN_FRONTEND: noninteractive  
         steps:
           - checkout
           - add_ssh_keys:
-              fingerprints: [16:1e:28:18:89:a9:13:3b:8b:05:ea:9b:e4:ac:ac:16]
-          - env:
-              TZ: "America/Los_Angeles"
-              DEBIAN_FRONTEND: noninteractive    
+              fingerprints: [16:1e:28:18:89:a9:13:3b:8b:05:ea:9b:e4:ac:ac:16]                
           - run:
               name: Install Dependencies
               command: |

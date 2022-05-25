@@ -38,6 +38,7 @@ jobs:
           - run:
               name: Configure Server
               command: |
+                aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text 
                 aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text >> ansible/inventory.txt
                 ansible-playbook -i ansible/inventory.txt ansible/main.yml 
 

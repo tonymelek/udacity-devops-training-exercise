@@ -21,6 +21,8 @@ jobs:
   ansible_playbook:
         docker:
           - image: ubuntu
+            environment:
+              TZ: "America/Los_Angeles"
         steps:
           - checkout
           - add_ssh_keys:
